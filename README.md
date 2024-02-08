@@ -21,7 +21,7 @@ tqdm==4.65.0
 
 #### Download the dataset
 
-We already preprocess all datasets and save csv files in directory `data/`.
+We already preprocess bitcoinalpha, bitcionotc, Sytentic-Hijack, Sytentic-New datsets and save csv files in directory `data/`.
 
 You can download the Wikipedia and Reddit datasets from here (http://snap.stanford.edu/jodie/) and store their csv files in directory `data/`.
 
@@ -41,7 +41,7 @@ After preprocessing, output file is `ml_dataset_name.csv` and contains data form
 
 During this process, `.npy` files containing node or edge feature information have been generated for other baseline models, which are not utilized in the SLADE model. (we need only `ml_dataset_name.csv` files)
 
-Data preprocessing has been conducted for all datasets (including Email datasets) and saved in directory `data/`.
+Data preprocessing has been conducted for all datasets (except reddit dataset) and saved in directory `data/`.
 
 
 ### Run the model
@@ -100,14 +100,14 @@ python SLADE_main.py --only_rec_score
 
 ```
 
-### Scenario Analysis
+### Type Analysis
 
 ```{bash}
-# Email-EU-Hijack (Scenario 1 & 3)
-python SLADE_main.py -d Email-EU_hijack
+# Sythetic-Hijack (Scenario 1 & 3)
+python SLADE_main.py -d Sythetic_hijack
 
-# Email-EU-New (Scenario 2 & 3)
-python SLADE_main.py -d Email-EU_new
+# Sythetic-New (Scenario 2 & 3)
+python SLADE_main.py -d Sythetic_new
 
 ```
 
