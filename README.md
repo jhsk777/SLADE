@@ -98,10 +98,10 @@ python SLADE_main.py --only_rec_score
 ### Type Analysis
 
 ```{bash}
-# Sythetic-Hijack (Scenario 1 & 3)
+# Sythetic-Hijack (type 1 & 3)
 python SLADE_main.py -d synthetic_hijack
 
-# Sythetic-New (Scenario 2 & 3)
+# Sythetic-New (type 2 & 3)
 python SLADE_main.py -d synthetic_new
 ```
 
