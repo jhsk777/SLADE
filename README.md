@@ -99,10 +99,10 @@ python SLADE_main.py --only_rec_score
 
 ```{bash}
 # Sythetic-Hijack (Scenario 1 & 3)
-python SLADE_main.py -d Synthetic_hijack
+python SLADE_main.py -d synthetic_hijack
 
 # Sythetic-New (Scenario 2 & 3)
-python SLADE_main.py -d Synthetic_new
+python SLADE_main.py -d synthetic_new
 ```
 
 
