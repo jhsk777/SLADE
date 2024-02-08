@@ -54,7 +54,6 @@ python SLADE_main.py -d wikipedia
 python SLADE_main.py -d reddit
 python SLADE_main.py -d bitcoinalpha
 python SLADE_main.py -d bitcoinotc
-
 ```
 
 Dynamic Anomaly Detection for each dataset (SLADE-HP)
@@ -64,7 +63,6 @@ python SLADE_main.py -d wikipedia --bs 300 --srf 10 --drf 10
 python SLADE_main.py -d reddit --bs 100 --srf 0.1 --drf 1
 python SLADE_main.py -d bitcoinalpha --bs 300 --srf 1 --drf 10
 python SLADE_main.py -d bitcoinotc --bs 300 --srf 10 --drf 1
-
 ```
 
 Training Ratio Test
@@ -72,14 +70,12 @@ Training Ratio Test
 ```{bash}
 python SLADE_main.py -d wikipedia --training_ratio 0.7
 python SLADE_main.py -d reddit --training_ratio 0.7
-
 ```
 
 Detection Time Test (on the Wikipedia dataset)
 
 ```{bash}
 python SLADE_main.py --test_inference_time
-
 ```
 
 ### Ablation Study
@@ -97,18 +93,16 @@ python SLADE_main.py --only_drift_score
 
 # Memory Drift Loss + Memory Reconstruction Loss + Reconstruction Score
 python SLADE_main.py --only_rec_score
-
 ```
 
 ### Type Analysis
 
 ```{bash}
 # Sythetic-Hijack (Scenario 1 & 3)
-python SLADE_main.py -d Sythetic_hijack
+python SLADE_main.py -d Synthetic_hijack
 
 # Sythetic-New (Scenario 2 & 3)
-python SLADE_main.py -d Sythetic_new
-
+python SLADE_main.py -d Synthetic_new
 ```
 
 
@@ -141,6 +135,5 @@ optional arguments:
   --only_recovery_loss_score   Whether to use only Memory Reconstruction Loss and Reconstruction Score
   --only_drift_score           Whether to use all losses and only Drift Score
   --only_rec_score             Whether to use all losses and only Reconstruction Score
-  --test_inference_time        Whether to measure detection time (with an evolving CTDG)
-  
+  --test_inference_time        Whether to measure detection time (with an evolving CTDG)  
 ```
