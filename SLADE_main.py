@@ -11,7 +11,7 @@ import torch
 import numpy as np
 import copy
 
-from model.SLADE_TGN import CLADE_TGN
+from model.SLADE_TGN import SLADE_TGN
 from utils.utils import get_neighbor_finder
 from utils.data_processing import get_data_node_classification
 from evaluation.evaluation import eval_anomaly_node_detection
@@ -122,7 +122,7 @@ if __name__ == '__main__':
     epoch_times = []
     for i in range(args.n_runs):
         logger.info('Dynamic anomaly detection start - runs: {}'.format(str(i)))
-        dcl_tgn = CLADE_TGN(neighbor_finder=train_ngh_finder, n_nodes=full_data.n_unique_nodes, n_edges=full_data.n_interactions,
+        dcl_tgn = SLADE_TGN(neighbor_finder=train_ngh_finder, n_nodes=full_data.n_unique_nodes, n_edges=full_data.n_interactions,
                                  device=device,n_layers=NUM_LAYER, n_heads=NUM_HEADS,
                                 dropout=DROP_OUT, message_dimension=MESSAGE_DIM, memory_dimension=MEMORY_DIM, n_neighbors=NUM_NEIGHBORS,
                                 memory_agg_type=memory_agg_type, negative_memory_type=negative_memory_type, message_updater=message_updater,
