@@ -112,8 +112,8 @@ if __name__ == '__main__':
     train_ngh_finder = get_neighbor_finder(train_data, uniform=False, max_node_idx=max_idx)
     full_ngh_finder = get_neighbor_finder(full_data, uniform=False, max_node_idx=max_idx)
 
-    src_neighbors, _, src_neighbors_time = full_ngh_finder.get_temporal_neighbor_tqdm(full_data.sources, full_data.timestamps, NUM_NEIGHBORS)
-    dst_neighbors, _, dst_neighbors_time = full_ngh_finder.get_temporal_neighbor_tqdm(full_data.destinations, full_data.timestamps, NUM_NEIGHBORS)
+    src_neighbors, _, src_neighbors_time = train_ngh_finder.get_temporal_neighbor_tqdm(train_data.sources, train_data.timestamps, NUM_NEIGHBORS)
+    dst_neighbors, _, dst_neighbors_time = train_ngh_finder.get_temporal_neighbor_tqdm(train_data.destinations, train_data.timestamps, NUM_NEIGHBORS)
 
     device_string = 'cuda:{}'.format(GPU) if torch.cuda.is_available() else 'cpu'
     device = torch.device(device_string)
@@ -134,10 +134,10 @@ if __name__ == '__main__':
         train_data_sources = torch.from_numpy(train_data.sources).long().to(device)
         train_data_destinations = torch.from_numpy(train_data.destinations).long().to(device)
         train_data_timestamps = torch.from_numpy(train_data.timestamps).float().to(device)
-        full_data_src_neighbors = torch.from_numpy(src_neighbors).long().to(device)
-        full_data_dst_neighbors = torch.from_numpy(dst_neighbors).long().to(device)
-        full_data_src_neighbors_time = torch.from_numpy(src_neighbors_time).long().to(device)
-        full_data_dst_neighbors_time = torch.from_numpy(dst_neighbors_time).long().to(device)
+        train_data_src_neighbors = torch.from_numpy(src_neighbors).long().to(device)
+        train_data_dst_neighbors = torch.from_numpy(dst_neighbors).long().to(device)
+        train_data_src_neighbors_time = torch.from_numpy(src_neighbors_time).long().to(device)
+        train_data_dst_neighbors_time = torch.from_numpy(dst_neighbors_time).long().to(device)
         
         num_instance = len(train_data.sources)
         num_batch = math.ceil(num_instance / BATCH_SIZE)
@@ -164,10 +164,10 @@ if __name__ == '__main__':
                 sources_batch = train_data_sources[s_idx: e_idx]
                 destinations_batch = train_data_destinations[s_idx: e_idx]
                 timestamps_batch = train_data_timestamps[s_idx: e_idx]
-                src_neighbors_batch = full_data_src_neighbors[s_idx: e_idx]
-                dst_neighbors_batch = full_data_dst_neighbors[s_idx: e_idx]
-                src_neighbors_time_batch = full_data_src_neighbors_time[s_idx: e_idx]
-                dst_neighbors_time_batch = full_data_dst_neighbors_time[s_idx: e_idx]
+                src_neighbors_batch = train_data_src_neighbors[s_idx: e_idx]
+                dst_neighbors_batch = train_data_dst_neighbors[s_idx: e_idx]
+                src_neighbors_time_batch = train_data_src_neighbors_time[s_idx: e_idx]
+                dst_neighbors_time_batch = train_data_dst_neighbors_time[s_idx: e_idx]
 
                 size = len(sources_batch)
 
