@@ -1,6 +1,5 @@
-# This is the source code for [SLADE: Detecting Dynamic Anomalies in Edge Streams without Labels via Self-Supervised Learning]
-
-Some codes are borrowed from [TGN](https://github.com/twitter-research/tgn) 
+# [SLADE: Detecting Dynamic Anomalies in Edge Streams without Labels via Self-Supervised Learning]
+This is the source code for [SLADE: Detecting Dynamic Anomalies in Edge Streams without Labels via Self-Supervised Learning].
 
 ## Requirements
 
@@ -28,7 +27,7 @@ You can download the Wikipedia and Reddit datasets from here (http://snap.stanfo
 We need the data format like `source_id, destination_id, timestamp, labels, features (optional))`.
 
 
-#### Preprocess the dataset
+#### Preprocess the dataset (from [TGN](https://github.com/twitter-research/tgn))
 
 ```{bash}
 python utils/preprocess_data.py --data wikipedia --bipartite
