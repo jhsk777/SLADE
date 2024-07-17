@@ -49,11 +49,11 @@ def eval_anomaly_node_detection(model, data, batch_size, n_neighbors, device,
             if np.isnan(positive_memory_score.reshape(-1).cpu().numpy()).sum()>0:
                 pdb.set_trace()
             
-            if only_drift_score: #ablation study
+            if only_drift_score: # ablation study
                 pred_score[s_idx: e_idx] = (-(drift_score).reshape(-1).cpu().numpy() + 1)/2
-            elif only_rec_score: #ablation study
+            elif only_rec_score: # ablation study
                 pred_score[s_idx: e_idx] = (-(positive_memory_score).reshape(-1).cpu().numpy() + 1)/2 
-            else: #defalut
+            else: # default
                 pred_score[s_idx: e_idx] = (-(drift_score).reshape(-1).cpu().numpy()-(positive_memory_score).reshape(-1).cpu().numpy() + 2)/4
                 
         auc_roc = roc_auc_score(data.labels, pred_score)
